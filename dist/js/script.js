@@ -1,7 +1,12 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var currentYear = new Date();
+currentYear = currentYear.getFullYear() + "";
+console.log(_typeof(currentYear));
+
 function createMonth(id, year, month) {
-  month = month - 1;
   var elem = document.getElementById(id);
   var date = new Date(year, month);
   var numberOfFirstDay = 0;
@@ -15,6 +20,10 @@ function createMonth(id, year, month) {
     var date = new Date(year, month, 1);
     numberOfFirstDay = date.getDay();
 
+    if (numberOfFirstDay == 0) {
+      numberOfFirstDay = 7;
+    }
+
     while (date.getMonth() === month) {
       arrOfDays.push(new Date(date));
       date.setDate(date.getDate() + 1);
@@ -22,10 +31,10 @@ function createMonth(id, year, month) {
   } //create of the month
 
 
-  function creatOfTheMonth(amountWeeks, amountOfDays) {
+  function creatOfTheMonth(elem, month, monthName, amountWeeks, amountOfDays) {
     var monthObj = document.createElement('table');
     monthObj = elem.appendChild(monthObj);
-    monthObj.innerHTML = "<thead><tr><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th></tr></thead>";
+    monthObj.innerHTML = "<caption>".concat(monthName[month], "</caption><thead><tr><th>\u041F\u043D</th><th>\u0412\u0442</th><th>\u0421\u0440</th><th>\u0427\u0442</th><th>\u041F\u0442</th><th>\u0421\u0431</th><th>\u0412\u0441</th></tr></thead>");
 
     for (var j = 0; j < amountWeeks; j++) {
       var TR = monthObj.appendChild(document.createElement('tr'));
@@ -46,12 +55,33 @@ function createMonth(id, year, month) {
     amountWeeks = 5;
   }
 
-  monthObj = creatOfTheMonth(amountWeeks, amountOfDays);
+  monthObj = creatOfTheMonth(elem, month, monthName, amountWeeks, amountOfDays);
   pseudoArrayOfCells = monthObj.querySelectorAll('#calendar table > tr td');
 
   for (var i = numberOfFirstDay - 1, j = 0; j < amountOfDays.length; i++, j++) {
     pseudoArrayOfCells[i].innerHTML = amountOfDays[j].getDate();
   }
+
+  return monthObj;
 }
 
-createMonth('calendar', 2011, 2);
+function createYear(id) {
+  var year = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : currentYear;
+  var elem = document.getElementById(id);
+  var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+  var numMonth = 0;
+  elem.innerHTML = ""; //clear the entire contents of the calendar
+
+  var yearWrapper = elem.appendChild(document.createElement('div'));
+  yearWrapper.setAttribute('id', 'year-wrapper');
+  yearWrapper.innerHTML = "".concat(year);
+
+  for (var i = 0; i < 12; i++) {
+    var monthWrapper = elem.appendChild(document.createElement('div'));
+    monthWrapper.setAttribute('id', months[i]);
+    createMonth(months[i], year, numMonth);
+    ++numMonth;
+  }
+}
+
+createYear('calendar', currentYear);
