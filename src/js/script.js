@@ -1,9 +1,8 @@
 "use strict"
 
 let currentYear = new Date();
+let inputYear;
 currentYear = currentYear.getFullYear() + "";
-
-console.log(typeof currentYear);
 
 function createMonth(id, year, month) {
 	let elem = document.getElementById(id);
@@ -85,4 +84,10 @@ function createYear(id, year = currentYear) {
 	}
 }
 
-createYear('calendar', currentYear);
+inputYear = document.getElementsByName('year')[0];
+
+inputYear.oninput = function() {
+	currentYear = inputYear.value;
+};
+
+createYear('calendar');
