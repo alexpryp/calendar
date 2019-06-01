@@ -74,7 +74,7 @@ function createYear(id, year = currentYear) {
 
 	elem.innerHTML = ""; //clear the entire contents of the calendar
 
-	let yearWrapper = elem.appendChild(document.createElement('div'));
+	let yearWrapper = document.body.querySelector(".wrapper").insertBefore(document.createElement('div'), elem);
 	yearWrapper.setAttribute('id', 'year-wrapper');
 	yearWrapper.innerHTML = `${year}`;
 

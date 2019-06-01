@@ -71,7 +71,7 @@ function createYear(id) {
   var numMonth = 0;
   elem.innerHTML = ""; //clear the entire contents of the calendar
 
-  var yearWrapper = elem.appendChild(document.createElement('div'));
+  var yearWrapper = document.body.querySelector(".wrapper").insertBefore(document.createElement('div'), elem);
   yearWrapper.setAttribute('id', 'year-wrapper');
   yearWrapper.innerHTML = "".concat(year);
 

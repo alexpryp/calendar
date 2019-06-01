@@ -3,6 +3,9 @@
 }
 body {
 	font-family: Arial, sans-serif;
+	color: #fff;
+	//background-image: linear-gradient(-90deg, #3168ab, #1b878a);
+	background-image: linear-gradient(-90deg, #60D4AE, #006E4A);
 }
 h1 {
 	text-align: center;
@@ -20,10 +23,34 @@ td, th {
 	padding: 3px;
 	text-align: center;
 }
+td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7) {
+	background-color: rgba(188, 47, 54, 0.5);
+}
+td:nth-child(6):hover, td:nth-child(7):hover, th:nth-child(6):hover, th:nth-child(7):hover {
+	background-color: #BC2F36;
+}
+td:hover, th:hover {
+	background-color: rgba(3, 62, 107, 1);
+	cursor: pointer;
+}
 th {
 	font-weight: bold;
-	background-color: #e6e6e6;
+	background-color: rgba(3, 62, 107, 0.5);
+}
+#calendar {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 1000px;
+	margin: 10px auto;
+	background-color: rgba(3, 62, 107, 0.4);
 }
 .month {
 	display: inline-block;
+	padding: 20px;
+}
+#year-wrapper {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
 }
