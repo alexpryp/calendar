@@ -42,6 +42,7 @@ function createMonth(id, year, month) {
       }
     }
 
+    elem.classList.add("month");
     return monthObj;
   }
 
