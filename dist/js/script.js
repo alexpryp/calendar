@@ -83,10 +83,26 @@ function createYear(id) {
   }
 }
 
-inputYear = document.getElementsByName('year')[0];
+var wrapper = document.body.querySelector(".wrapper");
+var form = document.forms.inputYear;
+var yearInput = form.elements.year;
+var errorMessageDiv = document.getElementById('error');
 
-inputYear.oninput = function () {
-  currentYear = inputYear.value;
-};
+function onBlur() {
+  if (isNaN(this.value)) {
+    this.className = "error";
+    errorMessageDiv.innerHTML = "Вы ввели не число. Исправьте, пожалуйста.";
+  }
+}
 
+function onFocus() {
+  if (this.className == "error") {
+    this.className = "";
+    error.innerHTML = "";
+  }
+}
+
+;
+yearInput.addEventListener("blur", onBlur);
+yearInput.addEventListener("focus", onFocus);
 createYear('calendar');

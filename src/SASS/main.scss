@@ -4,8 +4,9 @@
 body {
 	font-family: Arial, sans-serif;
 	color: #fff;
-	//background-image: linear-gradient(-90deg, #3168ab, #1b878a);
-	background-image: linear-gradient(-90deg, #60D4AE, #006E4A);
+	background-image: linear-gradient(-90deg, #7CDBF1, #1E4C96);
+	background-repeat: repeat;
+	background-size: cover;
 }
 h1 {
 	text-align: center;
@@ -18,8 +19,8 @@ form {
 	text-align: center;
 	margin: 20px;
 }
-td, th {
-	border: 0px solid black;
+td, th, #error {
+	//border: 1px solid #fff;
 	padding: 3px;
 	text-align: center;
 }
@@ -37,20 +38,23 @@ th {
 	font-weight: bold;
 	background-color: rgba(3, 62, 107, 0.5);
 }
+.error {
+	border-color: #ff0000;
+}
 #calendar {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	max-width: 1000px;
 	margin: 10px auto;
-	background-color: rgba(3, 62, 107, 0.4);
+	background-color: rgba(0, 0, 0, 0.4);
 }
 .month {
 	display: inline-block;
 	padding: 20px;
 }
 #year-wrapper {
-	font-size: 2em;
+	font-size: 4em;
 	font-weight: bold;
 	text-align: center;
 }

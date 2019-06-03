@@ -86,10 +86,26 @@ function createYear(id, year = currentYear) {
 	}
 }
 
-inputYear = document.getElementsByName('year')[0];
+let wrapper = document.body.querySelector(".wrapper");
+let form = document.forms.inputYear;
+let yearInput = form.elements.year;
+let errorMessageDiv = document.getElementById('error');
 
-inputYear.oninput = function() {
-	currentYear = inputYear.value;
+function onBlur () {
+	if (isNaN(this.value)) {
+		this.className = "error";
+		errorMessageDiv.innerHTML = "Вы ввели не число. Исправьте, пожалуйста.";
+	}
+}
+
+function onFocus() {
+	if(this.className == "error") {
+		this.className = "";
+		error.innerHTML ="";
+	}
 };
+
+yearInput.addEventListener("blur", onBlur);
+yearInput.addEventListener("focus", onFocus);
 
 createYear('calendar');
