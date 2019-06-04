@@ -20,19 +20,8 @@ form {
 	margin: 20px;
 }
 td, th, #error {
-	//border: 1px solid #fff;
 	padding: 3px;
 	text-align: center;
-}
-td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7) {
-	background-color: rgba(188, 47, 54, 0.5);
-}
-td:nth-child(6):hover, td:nth-child(7):hover, th:nth-child(6):hover, th:nth-child(7):hover {
-	background-color: #BC2F36;
-}
-td:hover, th:hover, input[name="submit"]:hover {
-	background-color: rgba(3, 62, 107, 1);
-	cursor: pointer;
 }
 th {
 	font-weight: bold;
@@ -69,4 +58,15 @@ input[name="submit"] {
 	font-size: 4em;
 	font-weight: bold;
 	text-align: center;
+}
+
+td:nth-child(6), td:nth-child(7), th:nth-child(6), th:nth-child(7) {
+	background-color: rgba(188, 47, 54, 0.5);
+}
+td:nth-child(6):hover, td:nth-child(7):hover, th:nth-child(6):hover, th:nth-child(7):hover {
+	background-color: #BC2F36;
+}
+td:hover, th:hover, input[name="submit"]:hover {
+	background-color: rgba(3, 62, 107, 1);
+	cursor: pointer;
 }
