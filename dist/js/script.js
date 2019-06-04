@@ -2,6 +2,11 @@
 
 var currentYear = new Date();
 var inputYear;
+var wrapper = document.body.querySelector(".wrapper");
+var form = document.forms.inputYear;
+var yearInput = form.elements.year;
+var errorMessageDiv = document.getElementById('error');
+var submitButtom = form.elements.submit;
 currentYear = currentYear.getFullYear() + "";
 
 function createMonth(id, year, month) {
@@ -71,9 +76,14 @@ function createYear(id) {
   var numMonth = 0;
   elem.innerHTML = ""; //clear the entire contents of the calendar
 
+  if (document.body.querySelector("#year-wrapper")) {
+    document.body.querySelector("#year-wrapper").remove();
+  }
+
   var yearWrapper = document.body.querySelector(".wrapper").insertBefore(document.createElement('div'), elem);
   yearWrapper.setAttribute('id', 'year-wrapper');
   yearWrapper.innerHTML = "".concat(year);
+  yearInput.setAttribute('placeholder', "".concat(year));
 
   for (var i = 0; i < 12; i++) {
     var monthWrapper = elem.appendChild(document.createElement('div'));
@@ -82,11 +92,6 @@ function createYear(id) {
     ++numMonth;
   }
 }
-
-var wrapper = document.body.querySelector(".wrapper");
-var form = document.forms.inputYear;
-var yearInput = form.elements.year;
-var errorMessageDiv = document.getElementById('error');
 
 function onBlur() {
   if (isNaN(this.value)) {
@@ -103,6 +108,18 @@ function onFocus() {
 }
 
 ;
+
+function onSubmit(event) {
+  var year = yearInput.value;
+  createYear('calendar', +year);
+}
+
+function noSubmit(event) {
+  event.preventDefault();
+}
+
 yearInput.addEventListener("blur", onBlur);
 yearInput.addEventListener("focus", onFocus);
+submitButtom.addEventListener("click", onSubmit);
+form.addEventListener("submit", noSubmit);
 createYear('calendar');

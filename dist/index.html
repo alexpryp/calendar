@@ -8,10 +8,10 @@
 <body>
 	<div class="wrapper">
 		<h1>Календарь</h1>
-		<form name="inputYear">
+		<form name="inputYear" action="#">
 			Введите год:
-			<input type="text" name="year" value="">
-			<input type="submit" onclick="createYear('calendar')" value="Показать">
+			<input type="text" name="year" placeholder="" value="" autofocus>
+			<input type="button" name="submit" value="Показать">
 		</form>
 		<div id="error" name="error"></div>
 		<div id="calendar"></div>
